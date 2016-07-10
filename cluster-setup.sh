@@ -1,3 +1,6 @@
+
+#execute this with a line similar with 
+#wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/cluster-setup.sh | bash
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -11,3 +14,5 @@ sudo usermod -a -G docker `whoami`
 #force reload of user groups
 exec sudo su -l `whoami` 
 wget https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/docker-compose.yml
+docker-compose up -d
+
