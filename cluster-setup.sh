@@ -6,3 +6,8 @@ sudo apt-get update
 sudo apt-get install -y docker-engine
 sudo apt-get install -y python-pip
 sudo pip install docker-compose
+#add current user to docker group
+sudo usermod -a -G docker `whoami`
+#force reload of user groups
+exec sudo su -l `whoami` 
+wget https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/docker-compose.yml
