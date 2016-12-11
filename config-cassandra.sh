@@ -21,13 +21,13 @@ sudo service cassandra stop
 echo "changing cluster name"
 sudo sed -i -e 's/Test Cluster/CassandraTraining/g' /etc/cassandra/cassandra.yaml
 
-echo "changing listen_address"
+echo "changing listen_address to $IPADDR"
 sudo sed -i -e "s/listen_address: localhost/listen_address: $IPADDR/g" /etc/cassandra/cassandra.yaml
 
-echo "changing seed address"
+echo "changing seed address to $SEEDIP"
 sudo sed -i -e "s/127\.0\.0\.1/$SEEDIP/g" /etc/cassandra/cassandra.yaml
 
-echo "changing rpc_address"
+echo "changing rpc_address to $IPADDR"
 sudo sed -i -e "s/rpc_address: localhost/rpc_address: $IPADDR/g" /etc/cassandra/cassandra.yaml
 
 echo "removing old files"
