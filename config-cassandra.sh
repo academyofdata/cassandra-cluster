@@ -13,7 +13,12 @@ if [ $# -eq 2 ]
 fi
 
 echo "Using address $IPADDR with seed $SEEDIP"
-exit
+echo "this script will remove all your existing cassandra data. Proceed ? (Y/N)"
+read proceed 
+if [ "$proceed"=="N" ] 
+  then 
+    exit
+fi
 echo "stopping cassandra "
 sudo service cassandra stop
 
@@ -37,3 +42,23 @@ sudo service cassandra start
 
 echo "changing CQLSH_HOST variable"
 echo "export CQLSH_HOST=$IPADDR" | sudo tee -a /etc/profile
+
+if [ $# -eq 3 ]
+  then
+    echo "we have a third parameter, enabling user '$3'"
+    echo "enabling Password Login"
+    sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+
+    echo "reloading sshd"
+    sudo /etc/init.d/ssh reload
+
+    echo "adding user '$3'"
+    sudo adduser $3 --gecos \"First Last,RoomNumber,WorkPhone,HomePhone\" --disabled-password
+
+    PASSWD=`openssl rand -base64 8`
+    echo "setting user password to: $PASSWD"
+    echo "$3:$PASSWD" | sudo chpasswd
+
+    echo "adding user to sudo group"
+    sudo usermod -G adm,sudo,cuser cuser
+fi
