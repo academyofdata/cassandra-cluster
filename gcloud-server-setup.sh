@@ -1,7 +1,14 @@
 PROJECT="project-id-here"
 ZONE="europe-west1-d"
 MACHINE="g1-small"
-NODE="csnd1"
+NODE="cass1"
+
+if [ $# -eq 1 ]
+then
+	NODE=$1
+fi
+
+echo "using ${NODE} as instance name"
 
 gcloud compute instances create $NODE --zone $ZONE --machine-type $MACHINE --network "default"  --maintenance-policy "MIGRATE" --scopes default="https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring.write","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --image "/ubuntu-os-cloud/ubuntu-1604-xenial-v20161205" --boot-disk-size "10" --boot-disk-type "pd-standard" --boot-disk-device-name "${NODE}disk1" --project $PROJECT
 
