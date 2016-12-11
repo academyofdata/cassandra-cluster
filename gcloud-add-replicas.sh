@@ -4,14 +4,14 @@ MACHINE="g1-small"
 NODE="cass2"
 SEED="cass1"
 
-if [ $# -eq 1 ]
+if [ $# -ge 1 ]
 then
 	NODE=$1
 fi
 
 echo "using ${NODE} as instance name"
 
-if [ $# -eq 2 ]
+if [ $# -ge 2 ]
 then
 	SEED=$2
 fi

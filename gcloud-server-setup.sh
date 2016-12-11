@@ -3,7 +3,7 @@ ZONE="europe-west1-d"
 MACHINE="g1-small"
 NODE="cass1"
 
-if [ $# -eq 1 ]
+if [ $# -ge 1 ]
 then
 	NODE=$1
 fi
