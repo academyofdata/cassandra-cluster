@@ -13,12 +13,8 @@ if [ $# -eq 2 ]
 fi
 
 echo "Using address $IPADDR with seed $SEEDIP"
-echo "this script will remove all your existing cassandra data. Proceed ? (Y/N)"
-read proceed 
-if [ "$proceed"=="N" ] 
-  then 
-    exit
-fi
+echo "this script will remove all your existing cassandra data."
+
 echo "stopping cassandra "
 sudo service cassandra stop
 
