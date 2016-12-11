@@ -49,7 +49,7 @@ if [ $# -eq 3 ]
     sudo /etc/init.d/ssh reload
 
     echo "adding user '$3'"
-    sudo adduser $3 --gecos \"First Last,RoomNumber,WorkPhone,HomePhone\" --disabled-password
+    sudo adduser $3 --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 
     PASSWD=`openssl rand -base64 8`
     echo "setting user password to: $PASSWD"
