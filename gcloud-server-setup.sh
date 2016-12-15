@@ -18,7 +18,7 @@ sleep 30
 echo "installing cassandra on remote node"
 gcloud compute ssh --project $PROJECT $NODE --zone $ZONE --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/setup39.sh | bash"
 
-#IPADDR=`gcloud compute instances list --project $PROJECT --format=text | grep '^networkInterfaces\[[0-9]\+\]\.networkIP:' | sed 's/^.* //g'`
-IPADDR=`gcloud compute instances list --project $PROJECT | grep $NODE | awk '{print $4}'`
+IPADDR=`gcloud compute instances list --project $PROJECT --format=text $NODE | grep '^networkInterfaces\[[0-9]\+\]\.networkIP:' | sed 's/^.* //g'`
+#IPADDR=`gcloud compute instances list --project $PROJECT | grep $NODE | awk '{print $4}'`
 echo "configuring cassandra after installation"
 gcloud compute ssh --project $PROJECT $NODE --zone $ZONE --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/config-cassandra.sh | bash -s $IPADDR $IPADDR cuser"
