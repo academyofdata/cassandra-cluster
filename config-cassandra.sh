@@ -56,5 +56,5 @@ if [ $# -eq 3 ]
     echo "$3:$PASSWD" | sudo chpasswd
 
     echo "adding user to sudo group"
-    sudo usermod -G adm,sudo,cuser cuser
+    sudo usermod -G adm,sudo,$3 $3
 fi
