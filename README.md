@@ -16,9 +16,9 @@ wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/mast
 Once the three nodes are running (check with ```docker ps -a```), run 
 
 ```
-docker exec -ti `docker ps --format '{{.Names}}' | grep cassandra | grep node01` bash
+docker exec -ti `docker ps --format '{{.Names}}' | grep node01` bash
 ```
-to log into the first container (called {something}_node01_1) and then run 
+to log into the first container (called {something}_node01_1 - make sure that there are not other containers having node01 in their name) and then run 
 ```
 
 wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/get-data.sh |bash -s
