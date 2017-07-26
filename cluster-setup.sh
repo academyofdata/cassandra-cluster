@@ -14,5 +14,7 @@ sudo usermod -a -G docker `whoami`
 #force reload of user groups
 exec sudo su -l `whoami` 
 wget https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/docker-compose.yml
+#directory to persist node01 data between restarts
+mkdir ./data
 docker-compose up -d
 
