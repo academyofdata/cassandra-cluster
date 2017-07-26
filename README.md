@@ -18,4 +18,8 @@ Once the three nodes are running (check with ```docker ps -a```), run
 ```
 docker exec -ti `docker ps | grep cassandra | grep node01 | awk '{print $14}'` bash
 ```
-to log into the first container (called <something>_node01_1)
+to log into the first container (called {something}_node01_1) and then run 
+```
+wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/get-data.sh |bash -s
+```
+to download all the data files into /tmp
