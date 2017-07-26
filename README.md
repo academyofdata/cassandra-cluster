@@ -13,3 +13,9 @@ On a "fresh" Debian based system run the following command
 wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/cluster-setup.sh| bash -s
 ```
 
+Once the three nodes are running (check with ```docker ps -a```), run 
+
+```
+docker exec -ti `docker ps | grep cassandra | grep node01 | awk '{print $14}'` bash
+```
+to log into the first container (called <something>_node01_1)
