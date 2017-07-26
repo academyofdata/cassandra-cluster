@@ -26,7 +26,7 @@ wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/mast
 to download all the data files into /tmp
 
 
-###Installing wget
+### Installing wget
 
 If  at any of the steps above you get a message saying "bash: wget: command not found", run the following commands
 
