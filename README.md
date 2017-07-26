@@ -20,6 +20,17 @@ docker exec -ti `docker ps --format '{{.Names}}' | grep cassandra | grep node01`
 ```
 to log into the first container (called {something}_node01_1) and then run 
 ```
+
 wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/get-data.sh |bash -s
 ```
 to download all the data files into /tmp
+
+
+###Installing wget
+
+If  at any of the steps above you get a message saying "bash: wget: command not found", run the following commands
+
+```
+apt-get update
+apt-get install -y wget
+```
