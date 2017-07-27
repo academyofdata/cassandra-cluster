@@ -15,6 +15,6 @@ sudo usermod -a -G docker `whoami`
 exec sudo su -l `whoami` 
 wget https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/docker-compose.yml
 #directory to persist node01 data between restarts
-mkdir ./data
+mkdir ./data1 ./data2 ./data3 
 docker-compose up -d
 
