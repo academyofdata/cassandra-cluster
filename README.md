@@ -34,3 +34,9 @@ If  at any of the steps above you get a message saying "bash: wget: command not 
 apt-get update
 apt-get install -y wget
 ```
+### get_num_processes
+If you get a get_num_processes takes no arguments error, get out of cqlsh and run
+
+```
+rm /usr/lib/pymodules/python2.7/cqlshlib/copyutil.so
+```
