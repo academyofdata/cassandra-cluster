@@ -35,7 +35,7 @@ apt-get update
 apt-get install -y wget
 ```
 ### get_num_processes
-If you get a get_num_processes takes no arguments error, get out of cqlsh and run
+If you get a *get_num_processes() takes no keyword arguments* error, get out of cqlsh and run
 
 ```
 rm /usr/lib/pymodules/python2.7/cqlshlib/copyutil.so
