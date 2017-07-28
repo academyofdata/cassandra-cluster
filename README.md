@@ -31,7 +31,7 @@ Simply run
 ```
 docker-compose up -d
 ```
-In the same directory where you run the first install step (the one with cluster-setup.sh)
+In the same directory where you run the first install step (the one with cluster-setup.sh, there should be a file called docker-compose.yml)
 
 ### Installing wget
 
