@@ -27,7 +27,7 @@ to download all the data files into /tmp
 
 ## Restarting the containers
 
-Simply run
+If the containers have stopped, simply run
 ```
 docker-compose up -d
 ```
