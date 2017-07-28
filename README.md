@@ -25,6 +25,13 @@ wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/mast
 ```
 to download all the data files into /tmp
 
+## Restarting the containers
+
+Simply run
+```
+docker-compose up -d
+```
+In the same directory where you run the first install step (the one with cluster-setup.sh)
 
 ### Installing wget
 
@@ -35,7 +42,7 @@ apt-get update
 apt-get install -y wget
 ```
 ### get_num_processes
-If you get a *get_num_processes() takes no keyword arguments* error, get out of cqlsh and run
+If you get a **get_num_processes() takes no keyword arguments** error, get out of cqlsh and run
 
 ```
 rm /usr/lib/pymodules/python2.7/cqlshlib/copyutil.so
