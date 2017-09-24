@@ -47,3 +47,13 @@ If you get a **get_num_processes() takes no keyword arguments** error, get out o
 ```
 rm /usr/lib/pymodules/python2.7/cqlshlib/copyutil.so
 ```
+
+# Running a container with all the MovieLens (and other exercises) data already preloaded
+
+Start a single Cassandra node with the following command
+
+```
+docker run -d -p 7000:7000 -p 7001:7001 -p 7199:7199 -p 9042:9042 -p 9160:9160 --name aod_cass academyofdata/cassandra
+```
+
+Once the node is up-and-running you'll be able to access cqlsh the 'regular' way, but in addition to the 'stock' Cassandra image, in /data you'll have the csv for MovieLens & weather data.
