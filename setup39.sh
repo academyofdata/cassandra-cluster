@@ -6,4 +6,5 @@ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
 sudo apt-key adv --keyserver pool.sks-keyservers.net --recv-key A278B781FE4B2BDA
 sudo apt-get update
 sudo apt-get install cassandra
+sudo apt-get install cassandra-tools
 
