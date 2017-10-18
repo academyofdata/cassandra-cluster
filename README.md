@@ -33,6 +33,20 @@ docker-compose up -d
 ```
 In the same directory where you run the first install step (the one with cluster-setup.sh, there should be a file called docker-compose.yml)
 
+## Running the containers without docker-compose
+First, start a single node
+
+```
+docker run -d --name node01 academyofdata/cassandra
+```
+
+then, for each additional node, run 
+
+```
+docker run -d --link node01:node01 --name node02 -e "CASSANDRA_SEEDS=node01" academyofdata/cassandra
+```
+
+
 ### Installing wget
 
 If  at any of the steps above you get a message saying "bash: wget: command not found", run the following commands
