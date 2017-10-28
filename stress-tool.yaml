@@ -1,0 +1,56 @@
+#example taken from https://www.instaclustr.com/deep-diving-cassandra-stress-part-3-using-yaml-profiles/
+keyspace: stressexample
+keyspace_definition: |
+  CREATE KEYSPACE stressexample WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter1': '2'};
+#
+# Table name and create CQL
+#
+table: eventsrawtest
+table_definition: |
+  CREATE TABLE eventsrawtest (
+        host text,
+        bucket_time text,
+        service text,
+        time timestamp,
+        metric double,
+        state text,
+        PRIMARY KEY ((host, bucket_time, service), time)
+  ) WITH CLUSTERING ORDER BY (time DESC)
+
+#
+# Meta information for generating data
+#
+columnspec:
+  - name: host
+    size: fixed(32) #In chars, no. of chars of UUID
+    population: uniform(1..600)  # We have about 600 hosts with equal events per host
+  - name: bucket_time
+    size: fixed(18)
+    population: uniform(1..288) # 288 potential buckets
+  - name: service
+    size: uniform(10..100)
+    population: uniform(1000..2000) # 1000 - 2000 metrics per host
+  - name: time
+    cluster: fixed(15)
+  - name: state
+    size: fixed(4)
+    
+#
+# Specs for insert queries
+#
+insert:
+  partitions: fixed(1)      # 1 partition per batch
+  batchtype: UNLOGGED       # use unlogged batches
+  select: fixed(10)/10      # no chance of skipping a row when generating inserts
+
+#
+# Read queries to run against the schema
+#
+queries:
+   pull-for-rollup:
+      cql: select * from eventsrawtest where host = ? and service = ? and bucket_time = ?
+      fields: samerow             # pick selection values from same row in partition
+   get-a-value:
+      cql: select * from eventsrawtest where host = ? and service = ? and bucket_time = ? and time = ?
+      fields: samerow             # pick selection values from same row in partition
+    
