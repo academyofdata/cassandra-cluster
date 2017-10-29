@@ -7,7 +7,9 @@ then
     exit
 fi
 SDIR=$(dirname $0)
+#sets up the first node with the name node01
 $SDIR/gcloud-server-setup.sh node01
+#sets up subsequent nodes
 for ((i=2;i<=$numnodes;i++))
 do
         echo "starting node0$i"
