@@ -4,3 +4,4 @@ if [ ! -d "/etc/cassandra/conf/" ]; then
         sudo mkdir /etc/cassandra/conf/
 fi
 sudo wget -O /etc/cassandra/conf/AuditTrigger.properties https://raw.githubusercontent.com/apache/cassandra/trunk/examples/triggers/conf/AuditTrigger.properties 
+nodetool reloadtriggers
