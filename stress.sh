@@ -1,4 +1,8 @@
 #!/bin/bash
+cd /tmp
+if [ ! -f ./stress-tool.yaml ]; then
+  wget https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/stress-tool.yaml
+fi
 SESSID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)
 echo "session id is: $SESSID"
 sed "s/stressexample/stressexample_${SESSID}/g" ./stress-tool.yaml > stress-${SESSID}.yaml
