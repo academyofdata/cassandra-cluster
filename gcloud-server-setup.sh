@@ -16,7 +16,10 @@ sleep 30
 echo "installing cassandra on remote node"
 gcloud compute ssh ${NODE} --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/setup39.sh | bash"
 
+echo "finding internal address of the node"
 IPADDR=$(gcloud compute instances list --filter="name=${NODE}" --format="value(networkInterfaces[0].networkIP)")
+
+echo "IP is ${IPADDR}"
 
 echo "configuring cassandra after installation"
 gcloud compute ssh ${NODE} --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/config-cassandra.sh | bash -s $IPADDR $IPADDR cuser"
