@@ -14,12 +14,12 @@ echo "waiting for the machine to come up"
 sleep 30
 
 echo "installing cassandra on remote node"
-gcloud compute ssh $NODE --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/setup39.sh | bash"
+gcloud compute ssh ${NODE} --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/setup39.sh | bash"
 
 IPADDR=$(gcloud compute instances list --filter="name=${NODE}" --format="value(networkInterfaces[0].networkIP)")
 
 echo "configuring cassandra after installation"
-gcloud compute ssh $NODE --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/config-cassandra.sh | bash -s $IPADDR $IPADDR cuser"
+gcloud compute ssh ${NODE} --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/config-cassandra.sh | bash -s $IPADDR $IPADDR cuser"
 
 #config-cassandra.sh replaces the default cluster name with CassandraTraining, so tag that in a label
 gcloud compute instances add-labels ${NODE} --zone ${ZONE} --labels=cassandra-cluster-name=cassandra-training
