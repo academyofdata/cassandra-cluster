@@ -1,6 +1,6 @@
 #!/bin/bash
 ODIR="/tmp"
-sudo mkdir /data 2>>/dev/null
+mkdir /data 2>>/dev/null
 if [ -d "/data" ]; then
         ODIR="/data"
 fi
