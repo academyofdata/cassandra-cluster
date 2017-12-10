@@ -28,4 +28,4 @@ gcloud compute ssh ${NODE} --zone ${ZONE} --command "wget -qO- https://raw.githu
 gcloud compute instances add-labels ${NODE} --zone ${ZONE} --labels=cassandra-cluster-name=cassandra-training
 
 #get the sample data
-gcloud compute ssh ${NODE} --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/get-data.sh | bash"
+gcloud compute ssh ${NODE} --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/get-data.sh | sudo bash"
