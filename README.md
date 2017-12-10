@@ -7,11 +7,19 @@ docker run -d -p 7000:7000 -p 7001:7001 -p 7199:7199 -p 9042:9042 -p 9160:9160 -
 
 # Simulate a Cassandra cluster with 3 Docker containers
 
-On a "fresh" Debian based system run the following command
+A three node Cassandra cluster can be simulated with docker containers by downloading the docker-compose.yml file from this repository and then running
+
+```
+docker-compose up -d
+```
+(this will run if docker and docker-compose are already installed)
+
+Otherwise on a "fresh" Debian based system run the following command
 
 ```
 wget -qO- https://raw.githubusercontent.com/academyofdata/cassandra-cluster/master/cluster-setup.sh| bash -s
 ```
+to download and install docker and docker-compose and then run the docker-compose up -d command
 
 Once the three nodes are running (check with ```docker ps -a```), run 
 
